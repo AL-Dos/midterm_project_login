@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,7 +20,7 @@ class MainApp extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("lib/Assets/testIMG2.jpeg"),
+                  image: AssetImage("lib/Assets/testIMG1.jpeg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -42,7 +43,7 @@ class MainApp extends StatelessWidget {
                             size: 100,
                           ),
                           Text(
-                            "Travel\nAssistant",
+                            "Travel\nassistant",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 32,
@@ -66,7 +67,7 @@ class MainApp extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 17,
                               backgroundColor: Colors.white,
-                              child: Icon(Icons.person, color: Colors.black),
+                              child: Icon(Icons.person, color: Colors.black87),
                             ),
                           ),
                           hintText: 'Username',
@@ -90,7 +91,7 @@ class MainApp extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 17,
                               backgroundColor: Colors.white,
-                              child: Icon(Icons.lock, color: Colors.black),
+                              child: Icon(Icons.lock, color: Colors.black87),
                             ),
                           ),
                           hintText: 'Password',
@@ -104,7 +105,7 @@ class MainApp extends StatelessWidget {
                     // Sign In Button
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
+                        backgroundColor: Colors.lightGreen,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -122,54 +123,183 @@ class MainApp extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // Social media login options
-                    const Text(
-                      "Login with your account via social",
-                      style: TextStyle(color: Colors.white),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black.withOpacity(0.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 7,
+                          horizontal: 15,
+                        ),
+                      ),
+                      onPressed: () {
+                        // Handle sign-in
+                      },
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                            fontSize: 7,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 7),
+                      child: const Text(
+                        "Login with your social media account",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 7,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        IconButton(
-                          icon: const Icon(Icons.facebook),
-                          color: Colors.blue,
-                          iconSize: 40,
-                          onPressed: () {
-                            // Handle Facebook login
-                          },
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.blue,
+                          ),
+                          child: Center(
+                            child: Container(
+                              width: 25,
+                              height: 25,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: IconButton(
+                                padding: EdgeInsets.zero,
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.facebookF,
+                                  color: Colors.blue,
+                                  size: 15,
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.g_translate),
-                          color: Colors.red,
-                          iconSize: 40,
-                          onPressed: () {
-                            // Handle Google login
-                          },
+                        const SizedBox(width: 10),
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.red,
+                          ),
+                          child: Center(
+                            child: Container(
+                              width: 25,
+                              height: 25,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: IconButton(
+                                padding: EdgeInsets.zero,
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.googlePlusG,
+                                  color: Colors.red,
+                                  size: 15,
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.alternate_email),
-                          color: Colors.blueAccent,
-                          iconSize: 40,
-                          onPressed: () {
-                            // Handle Twitter login
-                          },
+                        const SizedBox(width: 10),
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.lightBlueAccent,
+                          ),
+                          child: Center(
+                            child: Container(
+                              width: 25,
+                              height: 25,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: IconButton(
+                                padding: EdgeInsets.zero,
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.twitter,
+                                  color: Colors.lightBlueAccent,
+                                  size: 15,
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.camera_alt),
-                          color: Colors.pinkAccent,
-                          iconSize: 40,
-                          onPressed: () {
-                            // Handle Instagram login
-                          },
+                        const SizedBox(width: 10),
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.pinkAccent,
+                          ),
+                          child: Center(
+                            child: Container(
+                              width: 25,
+                              height: 25,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: IconButton(
+                                padding: EdgeInsets.zero,
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.instagram,
+                                  color: Colors.pinkAccent,
+                                  size: 17,
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    // Sign Up Button
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Colors.orange),
+                    const SizedBox(height: 10),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black87.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 7),
+                      child: const Text(
+                        "Don't have an account?",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 7,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepOrange,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -179,11 +309,11 @@ class MainApp extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        // Handle sign-up
+                        // Handle sign-in
                       },
                       child: const Text(
                         'SIGN UP',
-                        style: TextStyle(fontSize: 16, color: Colors.orange),
+                        style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
                   ],
