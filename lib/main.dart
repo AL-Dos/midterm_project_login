@@ -24,24 +24,36 @@ class MainApp extends StatelessWidget {
                 ),
               ),
             ),
-            // Login form
             Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // App Logo or Title
-                    const Text(
-                      "Travel Assistant",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
+                    // ignore: avoid_unnecessary_containers
+                    Container(
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                            size: 100,
+                          ),
+                          Text(
+                            "Travel\nAssistant",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // Username field
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.black87.withOpacity(0.7),
@@ -72,7 +84,7 @@ class MainApp extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: const TextField(
-                          decoration: InputDecoration(
+                        decoration: InputDecoration(
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 15, right: 18),
                             child: CircleAvatar(
