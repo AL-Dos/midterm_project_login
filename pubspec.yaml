@@ -21,3 +21,7 @@ flutter:
   assets:
   - lib/Assets/testIMG1.jpeg
   - lib/Assets/testIMG2.jpg
+  fonts:
+  - family: Akika
+    fonts:
+    - asset: lib/Assets/AKIKA.ttf
