@@ -56,10 +56,12 @@ class MainApp extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     Container(
+                      width: 290,
                       decoration: BoxDecoration(
                         color: Colors.black87.withOpacity(0.7),
                         borderRadius: BorderRadius.circular(30),
                       ),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: const TextField(
                         decoration: InputDecoration(
                           prefixIcon: Padding(
@@ -78,12 +80,13 @@ class MainApp extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    // Password field
                     Container(
+                      width: 290,
                       decoration: BoxDecoration(
                         color: Colors.black87.withOpacity(0.7),
                         borderRadius: BorderRadius.circular(30),
                       ),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: const TextField(
                         decoration: InputDecoration(
                           prefixIcon: Padding(
@@ -105,15 +108,15 @@ class MainApp extends StatelessWidget {
                     // Sign In Button
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightGreen,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                          horizontal: 80,
-                        ),
-                      ),
+                          backgroundColor: Colors.lightGreen,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 80,
+                          ),
+                          minimumSize: const Size(290, 50)),
                       onPressed: () {
                         // Handle sign-in
                       },
@@ -299,15 +302,15 @@ class MainApp extends StatelessWidget {
                     const SizedBox(height: 16),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrange,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                          horizontal: 80,
-                        ),
-                      ),
+                          backgroundColor: Colors.deepOrange,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 80,
+                          ),
+                          minimumSize: const Size(290, 50)),
                       onPressed: () {
                         // Handle sign-in
                       },
