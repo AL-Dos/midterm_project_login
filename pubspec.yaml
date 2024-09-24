@@ -1,6 +1,6 @@
 name: midterm_project_login
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: 'Aldous Omictin'
 version: 0.1.0
 
 environment:
@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: 10.7.0
+  flutter_launcher_icons: 0.14.0
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +26,26 @@ flutter:
   - family: Akika
     fonts:
     - asset: lib/Assets/AKIKA.ttf
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path_ios: "lib/Assets/Icons/ios/AppIcon-29@3x.png"
+  image_path_android: "lib/Assets/Icons/android/res/mipmap-xxxhdpi/ic_launcher.png"
+  remove_alpha_ios: true
+  min_sdk_android: 16 
+  adaptive_icon_foreground: "lib/Assets/Icons/android/res/mipmap-xxhdpi/ic_launcher_foreground.png"
+  adaptive_icon_background: "lib/Assets/Icons/android/res/mipmap-xxhdpi/ic_launcher_background.png"
+  adaptive_icon_inset: 16
+  adaptive_icon_monochrome: "lib/Assets/Icons/android/res/mipmap-xxhdpi/ic_launcher_monochrome.png"
+  background_color_ios: "#ffffff"
+  web:
+    generate: true
+    image_path: "lib/Assets/Icons/web/icon-512.png"
+  windows:
+    generate: true
+    image_path: "lib/Assets/Icons/web/icon-512.png"
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: "lib/Assets/Icons/web/icon-512.png"
