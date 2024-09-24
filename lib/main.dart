@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:midterm_project_login/signup.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,10 +12,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        '/signup': (context) => const Signup(),
-      },
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -151,9 +149,7 @@ class MainApp extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               minimumSize: const Size(290, 50)),
-                          onPressed: () {
-                            // Handle sign-in
-                          },
+                          onPressed: () {},
                           child: const Text(
                             'SIGN IN',
                             style: TextStyle(fontSize: 16, color: Colors.white),
@@ -343,7 +339,9 @@ class MainApp extends StatelessWidget {
                               ),
                               minimumSize: const Size(290, 50)),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/signup');
+                            Get.to(() => const Signup(),
+                                transition: Transition.native,
+                                duration: const Duration(seconds: 3));
                           },
                           child: const Text(
                             'SIGN UP',
