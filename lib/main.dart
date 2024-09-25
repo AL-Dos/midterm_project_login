@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:midterm_project_login/dashboard.dart';
 import 'package:midterm_project_login/signup.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -190,7 +191,11 @@ class MainApp extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               minimumSize: const Size(290, 50)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const Dashboard(),
+                                transition: Transition.native,
+                                duration: const Duration(seconds: 3));
+                          },
                           child: const Text(
                             'SIGN IN',
                             style: TextStyle(fontSize: 16, color: Colors.white),

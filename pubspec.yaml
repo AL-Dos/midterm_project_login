@@ -23,6 +23,7 @@ flutter:
   assets:
   - lib/Assets/testIMG1.jpeg
   - lib/Assets/testIMG2.jpg
+  - lib/Assets/Icons/android/play_store_512.png
   fonts:
   - family: Akika
     fonts:
