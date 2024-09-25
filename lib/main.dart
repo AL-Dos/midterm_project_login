@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:midterm_project_login/signup.dart';
 import 'package:get/get.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() {
   runApp(const MainApp());
@@ -12,10 +13,50 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isLargeScreen = screenWidth > 600;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: true,
+        appBar: (kIsWeb && isLargeScreen)
+            ? null
+            : AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+              ),
+        drawer: (kIsWeb && isLargeScreen)
+            ? null
+            : Drawer(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: [
+                    DrawerHeader(
+                      decoration: BoxDecoration(color: Colors.blue[700]),
+                      child: const Text(
+                        'Menu',
+                        style: TextStyle(color: Colors.white, fontSize: 24),
+                      ),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.home),
+                      title: const Text('Click me 1'),
+                      onLongPress: () {},
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.settings),
+                      title: const Text('Click me 2'),
+                      onLongPress: () {},
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.logout),
+                      title: const Text('Click me 3'),
+                      onLongPress: () {},
+                    )
+                  ],
+                ),
+              ),
         body: Stack(
           fit: StackFit.expand,
           children: [
@@ -141,7 +182,7 @@ class MainApp extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 10),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.lightGreen,
@@ -155,6 +196,7 @@ class MainApp extends StatelessWidget {
                             style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                         ),
+                        const SizedBox(height: 10),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black87.withOpacity(0.7),
@@ -164,9 +206,7 @@ class MainApp extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             minimumSize: const Size(10, 20),
                           ),
-                          onPressed: () {
-                            // Handle sign-in
-                          },
+                          onPressed: () {},
                           child: const Text(
                             'Forgot Password?',
                             style: TextStyle(
@@ -175,6 +215,7 @@ class MainApp extends StatelessWidget {
                                 fontWeight: FontWeight.normal),
                           ),
                         ),
+                        const SizedBox(height: 10),
                         Container(
                           width: 150,
                           height: 20,
