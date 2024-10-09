@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:midterm_project_login/dashboard.dart';
@@ -417,17 +416,23 @@ class _MainAppState extends State<MainApp> {
   void signUsers() async {
     // ignore: avoid_print
     print('users test fetch');
-    const url = 'https://randomuser.me/api/?results=10';
+    const url = 'https://www.themealdb.com/api/json/v1/1/random.php';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
-    final body = response.body;
-    final json = jsonDecode(body);
-    setState(() {
-      users = json['results'];
-    });
-    // ignore: avoid_print
-    print('fetch test complete');
-    Get.to(() => const Dashboard(),
-        transition: Transition.native, duration: const Duration(seconds: 3));
+
+    if (response.statusCode == 200) {
+      final body = response.body;
+      final json = jsonDecode(body);
+      setState(() {
+        users = json['meals'];
+      });
+      // ignore: avoid_print
+      print('fetch test complete');
+      Get.to(() => const Dashboard(),
+          transition: Transition.native, duration: const Duration(seconds: 1));
+    } else {
+      // ignore: avoid_print
+      print('Failed to load users');
+    }
   }
 }

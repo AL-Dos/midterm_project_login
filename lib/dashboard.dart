@@ -16,31 +16,33 @@ class Dashboard extends StatelessWidget {
                     image: AssetImage(
                         "lib/Assets/Icons/android/play_store_512.png"))),
           ),
-          LayoutBuilder(builder: (context, constraints) {
-            return Center(
-              child: Column(
-                children: [
-                  const SizedBox(height: 600),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightGreen,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+          SingleChildScrollView(
+            child: LayoutBuilder(builder: (context, constraints) {
+              return Center(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 760),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.lightGreen,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        minimumSize: const Size(290, 50),
                       ),
-                      minimumSize: const Size(290, 50),
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: const Text(
+                        'Logout',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
                     ),
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: const Text(
-                      'Logout',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }),
+                  ],
+                ),
+              );
+            }),
+          ),
         ],
       ),
     );
