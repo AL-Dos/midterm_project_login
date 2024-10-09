@@ -1,16 +1,26 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:midterm_project_login/dashboard.dart';
 import 'package:midterm_project_login/signup.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  List<dynamic> users = [];
 
   @override
   Widget build(BuildContext context) {
@@ -192,9 +202,7 @@ class MainApp extends StatelessWidget {
                               ),
                               minimumSize: const Size(290, 50)),
                           onPressed: () {
-                            Get.to(() => const Dashboard(),
-                                transition: Transition.native,
-                                duration: const Duration(seconds: 3));
+                            signUsers();
                           },
                           child: const Text(
                             'SIGN IN',
@@ -404,5 +412,22 @@ class MainApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signUsers() async {
+    // ignore: avoid_print
+    print('users test fetch');
+    const url = 'https://randomuser.me/api/?results=10';
+    final uri = Uri.parse(url);
+    final response = await http.get(uri);
+    final body = response.body;
+    final json = jsonDecode(body);
+    setState(() {
+      users = json['results'];
+    });
+    // ignore: avoid_print
+    print('fetch test complete');
+    Get.to(() => const Dashboard(),
+        transition: Transition.native, duration: const Duration(seconds: 3));
   }
 }
