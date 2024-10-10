@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:midterm_project_login/dashboard.dart';
@@ -19,7 +20,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  List<dynamic> users = [];
 
   @override
   Widget build(BuildContext context) {
@@ -423,12 +423,14 @@ class _MainAppState extends State<MainApp> {
     if (response.statusCode == 200) {
       final body = response.body;
       final json = jsonDecode(body);
-      setState(() {
-        users = json['meals'];
-      });
+      final meals = json['meals'];
+
+      // ignore: avoid_print
+      print('Meals: $meals');
+
       // ignore: avoid_print
       print('fetch test complete');
-      Get.to(() => const Dashboard(),
+      Get.to(() => Dashboard(meals: meals),
           transition: Transition.native, duration: const Duration(seconds: 1));
     } else {
       // ignore: avoid_print
