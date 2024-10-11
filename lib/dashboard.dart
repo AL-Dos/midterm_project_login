@@ -112,18 +112,19 @@ class Dashboard extends StatelessWidget {
                                   Row(
                                     children: [
                                       Expanded(
-                                        child: _descriptionBox(
-                                            meal['idMeal'], Colors.blue),
+                                        child: _descriptionBox(meal['idMeal'],
+                                            Colors.lightBlueAccent),
                                       ),
                                       const SizedBox(width: 10),
                                       Expanded(
                                         child: _descriptionBox(
-                                            meal['strCategory'], Colors.yellow),
+                                            meal['strCategory'],
+                                            Colors.yellowAccent),
                                       ),
                                       const SizedBox(width: 10),
                                       Expanded(
                                         child: _descriptionBox(
-                                            meal['strArea'], Colors.red),
+                                            meal['strArea'], Colors.redAccent),
                                       ),
                                     ],
                                   ),
@@ -138,10 +139,16 @@ class Dashboard extends StatelessWidget {
                                     ),
                                     children: [
                                       for (int i = 1; i <= 20; i++)
-                                        if (meal['strIngredients$i'] != '' &&
-                                            meal['strMeasure$i'] != '' &&
-                                            meal['strIngredients$i'] != ' ' &&
-                                            meal['strMeasure$i'] != ' ')
+                                        if ((meal['strIngredients$i'] != null &&
+                                                meal['strIngredients$i']
+                                                    .toString()
+                                                    .trim()
+                                                    .isNotEmpty) ||
+                                            (meal['strMeasure$i'] != null &&
+                                                meal['strMeasure$i']
+                                                    .toString()
+                                                    .trim()
+                                                    .isNotEmpty))
                                           Row(
                                             children: [
                                               Padding(
