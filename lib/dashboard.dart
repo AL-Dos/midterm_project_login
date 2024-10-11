@@ -80,7 +80,7 @@ class Dashboard extends StatelessWidget {
                                             child: Text(
                                               'ID',
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 15,
                                                   color: Colors.black54),
                                               textAlign: TextAlign.center,
                                             ),
@@ -90,7 +90,7 @@ class Dashboard extends StatelessWidget {
                                             child: Text(
                                               'Category',
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 15,
                                                   color: Colors.black54),
                                               textAlign: TextAlign.center,
                                             ),
@@ -100,7 +100,7 @@ class Dashboard extends StatelessWidget {
                                             child: Text(
                                               'Origin',
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 15,
                                                   color: Colors.black54),
                                               textAlign: TextAlign.center,
                                             ),
@@ -127,30 +127,59 @@ class Dashboard extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10),
-                                  const Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'How to Cook',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.left,
+                                  ExpansionTile(
+                                    title: const Text(
+                                      'Ingredients',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                       ),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    children: [
+                                      for (int i = 1; i <= 20; i++)
+                                        if (meal['strIngredients$i'] != '' &&
+                                            meal['strMeasure$i'] != '' &&
+                                            meal['strIngredients$i'] != ' ' &&
+                                            meal['strMeasure$i'] != ' ')
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 2),
+                                                child: Text(
+                                                  '${meal['strIngredient$i']} = ${meal['strMeasure$i']}',
+                                                  style: const TextStyle(
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    meal['strInstructions'],
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      height: 2,
-                                      color: Colors.black87,
+                                  ExpansionTile(
+                                    title: const Text(
+                                      'How to Cook',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.left,
                                     ),
-                                    textAlign: TextAlign.justify,
-                                  )
+                                    children: [
+                                      Text(
+                                        meal['strInstructions'],
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          height: 2,
+                                          color: Colors.black87,
+                                        ),
+                                        textAlign: TextAlign.justify,
+                                      )
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -199,8 +228,8 @@ class Dashboard extends StatelessWidget {
                           const SizedBox(width: 15),
                           _iconShare(FontAwesomeIcons.tiktok, Colors.black87),
                           const SizedBox(width: 15),
-                          _iconShare(
-                              FontAwesomeIcons.telegram, Colors.lightBlueAccent)
+                          _iconShare(FontAwesomeIcons.redditAlien,
+                              Colors.deepOrangeAccent)
                         ],
                       ),
                     ],
@@ -263,17 +292,17 @@ Widget _iconShare(IconData icon, Color iconColor) {
       Container(
         width: 60,
         height: 60,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(25)),
-          color: Colors.white60,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
+          color: iconColor,
         ),
         child: Center(
           child: Container(
-            width: 40,
-            height: 40,
+            width: 35,
+            height: 35,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.white70,
+              color: Colors.white,
             ),
             child: IconButton(
               padding: EdgeInsets.zero,
