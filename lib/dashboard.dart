@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class Dashboard extends StatelessWidget {
@@ -55,7 +56,78 @@ class Dashboard extends StatelessWidget {
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
-                                  const SizedBox(height: 5),
+                                  Text(
+                                    meal['strTags'] != null &&
+                                            meal['strTags'].isNotEmpty
+                                        ? 'Tags: ${meal['strTags']}'
+                                        : 'Tags: Not available',
+                                    style: const TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  const SizedBox(height: 15),
+                                  const Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              'ID',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.black54),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Expanded(
+                                            child: Text(
+                                              'Category',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.black54),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Expanded(
+                                            child: Text(
+                                              'Origin',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.black54),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: _descriptionBox(
+                                            meal['idMeal'], Colors.blue),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: _descriptionBox(
+                                            meal['strCategory'], Colors.yellow),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: _descriptionBox(
+                                            meal['strArea'], Colors.red),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
                                   const Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
@@ -69,7 +141,7 @@ class Dashboard extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 5),
+                                  const SizedBox(height: 10),
                                   Text(
                                     meal['strInstructions'],
                                     style: const TextStyle(
@@ -86,24 +158,51 @@ class Dashboard extends StatelessWidget {
                         },
                       ),
                       Positioned(
-                          right: 20,
-                          top: 410,
+                          right: 40,
+                          top: 380,
                           child: Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
+                            width: 60,
+                            height: 60,
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.black, width: 2),
                             ),
-                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            padding: const EdgeInsets.symmetric(vertical: 9),
                             child: IconButton(
                               onPressed: () {},
                               padding: EdgeInsets.zero,
                               icon: const Icon(Icons.favorite,
-                                  color: Colors.red, size: 55),
+                                  color: Colors.red, size: 45),
                             ),
                           )),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Column(
+                    children: [
+                      const Text(
+                        "Share through social media",
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _iconShare(
+                              FontAwesomeIcons.facebookF, Colors.blueAccent),
+                          const SizedBox(width: 15),
+                          _iconShare(FontAwesomeIcons.xTwitter, Colors.black87),
+                          const SizedBox(width: 15),
+                          _iconShare(
+                              FontAwesomeIcons.instagram, Colors.pinkAccent),
+                          const SizedBox(width: 15),
+                          _iconShare(FontAwesomeIcons.tiktok, Colors.black87),
+                          const SizedBox(width: 15),
+                          _iconShare(
+                              FontAwesomeIcons.telegram, Colors.lightBlueAccent)
+                        ],
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -123,7 +222,7 @@ class Dashboard extends StatelessWidget {
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
-                  const SizedBox(height: 20)
+                  const SizedBox(height: 20),
                 ],
               );
             }),
@@ -132,4 +231,62 @@ class Dashboard extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _descriptionBox(dynamic text, Color bgColor) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+    margin: const EdgeInsets.symmetric(vertical: 5),
+    width: 115,
+    decoration: BoxDecoration(
+      color: bgColor,
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          text.toString(),
+          style: const TextStyle(fontSize: 13, color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _iconShare(IconData icon, Color iconColor) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Container(
+        width: 60,
+        height: 60,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(25)),
+          color: Colors.white60,
+        ),
+        child: Center(
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white70,
+            ),
+            child: IconButton(
+              padding: EdgeInsets.zero,
+              icon: FaIcon(
+                icon,
+                color: iconColor,
+                size: 25,
+              ),
+              onPressed: () {},
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }

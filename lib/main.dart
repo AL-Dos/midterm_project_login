@@ -20,7 +20,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -426,7 +425,7 @@ class _MainAppState extends State<MainApp> {
       final meals = json['meals'];
 
       // ignore: avoid_print
-      print('Meals: $meals');
+      print('$meals');
 
       // ignore: avoid_print
       print('fetch test complete');
